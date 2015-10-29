@@ -1,0 +1,81 @@
+<ion-view title="Informations">
+  <ion-nav-buttons side="secundary">
+      <button class="button" ng-click="editInfo()">
+        Edit
+      </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+      <div class="card">
+        {{info | json}}
+      </div>
+      <div class="card">
+        <div class="item item-divider">
+          Information Provided:
+        </div>
+          <div class="item item-text-wrap">
+            <strong>Name:</strong> <br>
+            <strong>Weight:</strong> {{info.weight|number:1}} kg<br>
+            <strong>Height:</strong> {{info.height}} cm<br>
+            Circumferences:<br>
+            <strong>Waist</strong>: {{info.waist}} cm<br>
+            <strong>Neck:</strong> {{info.neck}} cm<br>
+            <p ng-hide="!isMan()"><strong>Hips:</strong> {{info.hips}} cm</p>
+            <strong>Activity Rate:</strong> {{info.activity}}<br>
+          </div>
+      </div>
+      <div class="card">
+          <div class="item item-divider">
+            Information Calculated:
+          </div>
+          <div class="item item-text-wrap">
+            <strong>Body Fat:</strong> {{info.bf | number:1}}% <br>
+            <strong>Lean Body Mass:</strong> {{info.lbm | number:1}} kg<br>
+            <strong>BMR: </strong>{{info.bmr | number:0}}<br>
+            <strong>Estimated Daily Calorie Intake:</strong> {{info.tdee | number:0}}
+          </div>
+      </div>
+      <div class="card">
+          <div class="item item-divider">
+            Your Plan:
+          </div>
+          <div class="item item-text-wrap">
+            <strong>Plan:</strong> {{info.objective}} <br>
+            <strong ng-hide="!info.isCutting">Target Weight Loss:</strong>
+            <strong ng-hide="info.isCutting">Target Muscle Gain:</strong>{{info.target}} kg
+            <br><strong>Fat intake:</strong> {{info.fatIntake}}<div ng-hide="!info.isCutting">g/kg of LBM</div><div ng-hide="info.isCutting">% of daily calorie</div>
+            <strong>Protein Intake:</strong> {{info.proteinIntake}}g/kg of LBM
+          </div>
+      </div>
+      <div class="card" ng-hide="info.notCycling">
+          <div class="item item-divider">
+            Your Diet:
+          </div>
+          <div class="item item-text-wrap">
+              <strong>Train days({{info.trainDays}}):</strong><br>
+              <strong>Calories:</strong> {{info.caloriesTrainDays | number:0}}<br>
+              <strong>Protein:</strong> {{info.proteinTrainDays | number:0}}<br>
+              <strong>Fat:</strong> {{info.fatTrainDays | number:0}}<br>
+              <strong>Carb:</strong> {{info.carbTrainDays | number:0}}<br>
+
+              <br>
+
+              <strong>Rest Days:</strong><br>
+              <strong>Calories:</strong> {{info.caloriesRestDays | number:0}}<br>
+              <strong>Protein:</strong> {{info.proteinRestDays | number:0}}<br>
+              <strong>Fat:</strong> {{info.fatRestDays | number:0}}<br>
+              <strong>Carb:</strong> {{info.carbRestDays | number:0}}<br>
+          </div>
+      </div>
+      <div class="card" ng-hide="!info.notCycling">
+          <div class="item item-divider">
+            Your Diet:
+          </div>
+          <div class="item item-text-wrap">
+              <strong>Calories:</strong> {{info.calories | number:0}}<br>
+              <strong>Protein:</strong> {{info.gramProtein | number:0}}<br>
+              <strong>Fat:</strong> {{info.gramsFat | number:0}}<br>
+              <strong>Carb:</strong> {{info.gramCarb | number:0}}<br>
+          </div>
+      </div>
+    </ion-content>
+</ion-view>

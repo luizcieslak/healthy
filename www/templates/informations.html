@@ -1,0 +1,59 @@
+<ion-view title="Info">
+  
+    <ion-content padding="true" class="has-header">
+        <form class="list" name="infoForm" ng-submit="validate(infoForm)" novalidate="">
+
+            <ion-item class="item-divider">Are you a: {{data.gender}}</ion-item>
+
+              <ion-radio name="gender" ng-class="{ 'has-error-lr' : !infoForm.gender.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.gender.$modelValue  && infoForm.$submitted}" ng-repeat="item in genderList" ng-value="item.value" ng-model="data.gender" name="gender">{{item.text}}</ion-radio>
+
+            <ion-item class="item-divider">Tell us your objective: {{data.objective}}</ion-item>
+              <ion-radio name="objective" ng-class="{ 'has-error-lr' : !infoForm.objective.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.objective.$modelValue  && infoForm.$submitted}" ng-repeat="item in objectiveList" ng-value="item.value" ng-model="data.objective" name="objective">{{item.text}}</ion-radio>
+
+            <ion-item class="item-divider">Weight in kg: {{data.weight}}</ion-item>
+            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.weight.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.weight.$modelValue  && infoForm.$submitted}">
+                <span class="input-label">Weight:</span>
+                <input name="weight" type="number" ng-model="data.weight" min="1" ng-required="true">
+            </label>
+
+            <ion-item class="item-divider">Height in cm: {{data.height}}</ion-item>
+            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.height.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.height.$modelValue  && infoForm.$submitted}">
+                <span class="input-label">Height:</span>
+                <input name="height" type="number" ng-model="data.height" min="1" ng-required="true">
+            </label>
+
+            <ion-item class="item-divider">Circumferences in cm:</ion-item>
+            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.waist.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.waist.$modelValue  && infoForm.$submitted}">
+                <span class="input-label">Waist:</span>
+                <input name="waist" type="number" ng-model="data.waist" min="1" ng-required="true">
+            </label>
+
+            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.neck.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.neck.$modelValue  && infoForm.$submitted}">
+                <span class="input-label">Neck:</span>
+                <input name="neck" type="number" ng-model="data.neck" min="1" ng-required="true">
+            </label>
+            <label ng-hide="isWoman()" class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.hips.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.hips.$valid  && infoForm.$submitted}">
+                  <span class="input-label">Hips:</span>
+                  <input name="hips" type="number" ng-model="data.hips" min="1">
+            </label>
+
+            <ion-item class="item-divider">Describe yourself:</ion-item>
+              <ion-radio name="activity" ng-class="{ 'has-error-lr' : !infoForm.activity.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.activity.$modelValue  && infoForm.$submitted}" ng-repeat="item in activityList" ng-value="item.value" ng-model="data.activity" name="activity">{{item.text}}</ion-radio>
+            <button class="button button-dark button-block  button-full">
+              Next
+            </button>
+        </form>
+        <div class="form-errors" ng-show="infoForm.$invalid" ng-messages="infoForm.$error" ng-messages-include="templates/form-errors.html">
+        <div class="form-error" ng-message="required">You did not enter a field.</div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <strong>Sedentary:</strong> no exercise or little.<br>
+                <strong>Lightly:</strong> 1-2 workout/sports per week.<br>
+                <strong>Moderately active:</strong> 3-4 workout/sports per week.<br>
+                <strong>Very active:</strong> 5-6 workout/sports per week.<br>
+                <strong>Extreme:</strong> 7 or more workout/sports per week.
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
