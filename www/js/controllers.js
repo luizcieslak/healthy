@@ -290,6 +290,10 @@ angular.module('app.controllers', ['ngMessages'])
 
 })
 
+.controller('underConstructionCtrl', function($scope) {
+
+})
+
 .controller('mealsListCtrl', function($scope) {
 
 })
@@ -299,4 +303,13 @@ angular.module('app.controllers', ['ngMessages'])
 })
 
 .controller('tracking2Ctrl', function($scope) {
+})
+
+.controller('foodInputCtrl', function($scope) {
+  $scope.data={
+    name:''
+  };
+
+  $scope.send = function(data,$ionicPopup){
+  }
 })

@@ -79,8 +79,15 @@ angular.module('app.routes', [])
       }
     })
 
-
-
+    .state('tabsController.foodinput', {
+      url: '/foodinput',
+      views: {
+        'tab2': {
+          templateUrl: 'templates/foodinput.html',
+          controller: 'foodInputCtrl'
+        }
+      }
+    })
 
 
     .state('tabsController.tracking', {
@@ -120,13 +127,27 @@ angular.module('app.routes', [])
 
 
 
-
-
     .state('tracking2', {
       url: '/tracking',
       templateUrl: 'templates/tracking2.html',
       controller: 'tracking2Ctrl'
     })
+
+    .state('tabsController.underconstruction', {
+      url: '/underconstruction',
+      views:{
+        'tab2':{
+          templateUrl: 'templates/underconstruction.html',
+          controller: 'underConstructionCtrl'
+        },
+        'tab3':{
+          templateUrl: 'templates/underconstruction.html',
+          controller: 'underConstructionCtrl'
+        }
+      }
+
+    })
+
 
 
     ;
