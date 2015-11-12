@@ -1160,3 +1160,6 @@ $error$
 2015-11-08 14:02:34,218 - INFO  - Session cleaner: tokens: 0 - removed: 0 
 2015-11-08 14:02:34,218 - INFO  - Session cleaner: finished 
 2015-11-08 14:02:34,296 - INFO  - Listening for HTTP on /0:0:0:0:0:0:0:0:9000 
+2015-11-08 15:02:34,205 - INFO  - Session Cleaner: started 
+2015-11-08 15:02:34,206 - INFO  - Session cleaner: tokens: 0 - removed: 0 
+2015-11-08 15:02:34,206 - INFO  - Session cleaner: finished 

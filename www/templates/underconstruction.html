@@ -3,6 +3,12 @@
       <div class="centertext">
         <i class="icon ion-wand"></i>
         <p>This page is under construction!<br>(just like your body)</p>
+        <button class="button button-primary button-block " ng-click="checkForUpdates()">
+          Check for updates
+        </button>
+        <button class="button button-stable button-block button-pulse" ng-if="hasUpdate" ng-click="doUpdate()">
+          download update
+        </button>
       </div>
     </ion-content>
 </ion-view>
