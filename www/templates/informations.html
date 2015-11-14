@@ -1,5 +1,5 @@
 <ion-view title="Info">
-  
+
     <ion-content padding="true" class="has-header">
         <form class="list" name="infoForm" ng-submit="validate(infoForm)" novalidate="">
 
@@ -43,8 +43,8 @@
               Next
             </button>
         </form>
-        <div class="form-errors" ng-show="infoForm.$invalid" ng-messages="infoForm.$error" ng-messages-include="templates/form-errors.html">
-        <div class="form-error" ng-message="required">You did not enter a field.</div>
+        <div class="form-errors" ng-show="infoForm.$invalid" ng-messages="infoForm.$error">
+        <div class="form-error" ng-message="required" ng-messages-include="templates/form-errors.html">You did not enter a field.</div>
         </div>
         <div class="card">
             <div class="item item-text-wrap">

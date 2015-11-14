@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic','ionic.service.core', 'chart.js', 'ngMessages', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
+angular.module('app', ['ionic','ionic.service.core', 'ngMessages', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -20,3 +20,7 @@ angular.module('app', ['ionic','ionic.service.core', 'chart.js', 'ngMessages', '
     }
   });
 })
+
+.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+}]);
