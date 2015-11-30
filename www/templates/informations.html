@@ -1,58 +1,117 @@
-<ion-view title="Info">
-
+<ion-view title="{{'INFO_TITLE' | translate}}">
     <ion-content padding="true" class="has-header">
         <form class="list" name="infoForm" ng-submit="validate(infoForm)" novalidate="">
 
-            <ion-item class="item-divider">Are you a: {{data.gender}}</ion-item>
+            <ion-item class="item-divider">{{ 'GENDER_TITLE' | translate }}</ion-item>
+              <!-- All of the input fields implements de CSS classes has-error-lr and
+              valid-lr. If the input is correct, it will appear green bar on the side and a red
+              bar on top if otherwise.-->
 
-              <ion-radio name="gender" ng-class="{ 'has-error-lr' : !infoForm.gender.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.gender.$modelValue  && infoForm.$submitted}" ng-repeat="item in genderList" ng-value="item.value" ng-model="data.gender" name="gender">{{item.text}}</ion-radio>
+              <!-- For validation, we use $pristine to check radio buttons and $invalid to input data -->
 
-            <ion-item class="item-divider">Tell us your objective: {{data.objective}}</ion-item>
-              <ion-radio name="objective" ng-class="{ 'has-error-lr' : !infoForm.objective.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.objective.$modelValue  && infoForm.$submitted}" ng-repeat="item in objectiveList" ng-value="item.value" ng-model="data.objective" name="objective">{{item.text}}</ion-radio>
+              <!-- Gender Radio Buttons -->
+              <ion-radio name="gender"
+              ng-class="{ 'has-error-lr' : infoForm.gender.$pristine && infoForm.$submitted, 'valid-lr' : !infoForm.gender.$pristine  && infoForm.$submitted}"
+              value="Man"
+              ng-model="data.gender" >{{'MAN'| translate}}</ion-radio>
 
-            <ion-item class="item-divider">Weight in kg: {{data.weight}}</ion-item>
-            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.weight.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.weight.$modelValue  && infoForm.$submitted}">
-                <span class="input-label">Weight:</span>
+              <ion-radio name="gender"
+              value="Woman"
+              ng-model="data.gender" >{{'WOMAN'| translate}}</ion-radio>
+
+
+            <ion-item class="item-divider">{{ 'OBJECTIVE_TITLE'|translate}}</ion-item>
+              <!--Objective radio buttons-->
+              <ion-radio name="objective"
+              ng-class="{ 'has-error-lr' : infoForm.objective.$pristine && infoForm.$submitted, 'valid-lr' : !infoForm.objective.$pristine  && infoForm.$submitted}"
+              value="Cutting"
+              ng-model="data.objective"
+              name="objective">{{'CUTTING'| translate}}</ion-radio>
+
+              <ion-radio name="objective"
+              value="Bulking"
+              ng-model="data.objective"
+              name="objective" class="item-text-wrap">{{'BULKING'| translate}}</ion-radio>
+
+            <ion-item class="item-divider">{{ 'WEIGHT_TITLE' | translate }} {{data.weight}}</ion-item>
+            <label class="item item-input"
+            ng-class="{ 'has-error-lr' : infoForm.weight.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.weight.$valid  && infoForm.$submitted}">
+                <span class="input-label">{{ 'WEIGHT_TITLE' | translate }}</span>
                 <input name="weight" type="number" ng-model="data.weight" min="1" ng-required="true">
             </label>
 
-            <ion-item class="item-divider">Height in cm: {{data.height}}</ion-item>
-            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.height.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.height.$modelValue  && infoForm.$submitted}">
+            <ion-item class="item-divider">{{ 'HEIGHT_TITLE' | translate }} {{data.height}}</ion-item>
+            <label class="item item-input"
+            ng-class="{ 'has-error-lr' : infoForm.height.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.height.$valid  && infoForm.$submitted}">
                 <span class="input-label">Height:</span>
                 <input name="height" type="number" ng-model="data.height" min="1" ng-required="true">
             </label>
 
-            <ion-item class="item-divider">Circumferences in cm:</ion-item>
-            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.waist.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.waist.$modelValue  && infoForm.$submitted}">
-                <span class="input-label">Waist:</span>
+            <ion-item class="item-divider">{{ 'MEASURES_TITLE' | translate }}</ion-item>
+            <label class="item item-input"
+            ng-class="{ 'has-error-lr' : infoForm.waist.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.waist.$valid  && infoForm.$submitted}">
+                <span class="input-label">{{ 'WAIST_TITLE' | translate }}</span>
                 <input name="waist" type="number" ng-model="data.waist" min="1" ng-required="true">
             </label>
 
-            <label class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.neck.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.neck.$modelValue  && infoForm.$submitted}">
-                <span class="input-label">Neck:</span>
+            <label class="item item-input"
+            ng-class="{ 'has-error-lr' : infoForm.neck.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.neck.$valid  && infoForm.$submitted}">
+                <span class="input-label">{{ 'NECK_TITLE' | translate }}</span>
                 <input name="neck" type="number" ng-model="data.neck" min="1" ng-required="true">
             </label>
-            <label ng-hide="isWoman()" class="item item-input" ng-class="{ 'has-error-lr' : !infoForm.hips.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.hips.$valid  && infoForm.$submitted}">
-                  <span class="input-label">Hips:</span>
-                  <input name="hips" type="number" ng-model="data.hips" min="1">
+
+            <!--The hip measure is needed only if the user is a woman.-->
+            <label ng-hide="!isWoman()"
+            ng-class="{ 'has-error-lr' : isWoman() && infoForm.hips.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.hips.$valid  && infoForm.$submitted}"
+            class="item item-input">
+                  <span class="input-label">{{ 'HIPS_TITLE' | translate }}</span>
+                  <input name="hips" type="number" ng-model="data.hips" min="1" ng-required="isWoman()">
             </label>
 
-            <ion-item class="item-divider">Describe yourself:</ion-item>
-              <ion-radio name="activity" ng-class="{ 'has-error-lr' : !infoForm.activity.$modelValue && infoForm.$submitted, 'valid-lr' : infoForm.activity.$modelValue  && infoForm.$submitted}" ng-repeat="item in activityList" ng-value="item.value" ng-model="data.activity" name="activity">{{item.text}}</ion-radio>
+            <!--Activity Radio Buttons-->
+            <ion-item class="item-divider">{{ 'ACTIVITY_TITLE' | translate }}</ion-item>
+              <ion-radio name="activity"
+              ng-class="{ 'has-error-lr' : infoForm.activity.$pristine && infoForm.$submitted, 'valid-lr' : !infoForm.activity.$pristine  && infoForm.$submitted}"
+              value="Sedentary"
+              ng-model="data.activity"
+              name="activity">{{'SEDENTARY'| translate}}</ion-radio>
+
+              <ion-radio name="activity"
+              value="Lightly"
+              ng-model="data.activity"
+              name="activity">{{'LIGHTLY'| translate}}</ion-radio>
+
+              <ion-radio name="activity"
+              value="Moderately"
+              ng-model="data.activity"
+              name="activity">{{'MODERATELY'| translate}}</ion-radio>
+
+              <ion-radio name="activity"
+              value="Very"
+              ng-model="data.activity"
+              name="activity">{{'VERY'| translate}}</ion-radio>
+
+              <ion-radio name="activity"
+              value="Extreme"
+              model="data.activity"
+              name="activity">{{'EXTREME'| translate}}</ion-radio>
+
+
             <button class="button button-dark button-block  button-full">
-              Next
+              {{'BUTTON_NEXT' | translate}}
             </button>
+
+            <p class="error" ng-show="infoForm.$invalid && infoForm.$submitted">{{'FORM_ERROR' | translate}}</p>
         </form>
-        <div class="form-errors" ng-show="infoForm.$invalid" ng-messages="infoForm.$error">
-        <div class="form-error" ng-message="required" ng-messages-include="templates/form-errors.html">You did not enter a field.</div>
+
         </div>
         <div class="card">
             <div class="item item-text-wrap">
-                <strong>Sedentary:</strong> no exercise or little.<br>
-                <strong>Lightly:</strong> 1-2 workout/sports per week.<br>
-                <strong>Moderately active:</strong> 3-4 workout/sports per week.<br>
-                <strong>Very active:</strong> 5-6 workout/sports per week.<br>
-                <strong>Extreme:</strong> 7 or more workout/sports per week.
+                <strong>{{'SEDENTARY' | translate}}:</strong> {{'SEDENTARY_DESCRIPTION' | translate}}<br>
+                <strong>{{'LIGHTLY' | translate}}:</strong> {{'LIGHTLY_DESCRIPTION' | translate}}<br>
+                <strong>{{'MODERATELY' | translate}}:</strong> {{'MODERATELY_DESCRIPTION' | translate}}<br>
+                <strong>{{'VERY' | translate}}:</strong> {{'VERY_DESCRIPTION' | translate}}<br>
+                <strong>{{'EXTREME' | translate}}</strong> {{'EXTREME_DESCRIPTION' | translate}}
             </div>
         </div>
     </ion-content>

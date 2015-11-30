@@ -1,80 +1,77 @@
-<ion-view title="Informations">
+<ion-view title="{{'INFO_TITLE' | translate }}">
   <ion-nav-buttons side="right">
       <button class="button" ng-click="editInfo()">
-        Edit
+        {{'BUTTON_EDIT' | translate}}
       </button>
     </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
-      <div class="card">
-        {{info | json}}
-      </div>
+      <!-- put a profile card here-->
       <div class="card">
         <div class="item item-divider">
-          Information Provided:
+          {{'INFOPROVIDED_TITLE' | translate}}
         </div>
           <div class="item item-text-wrap">
-            <strong>Name:</strong> <br>
-            <strong>Weight:</strong> {{info.weight|number:1}} kg<br>
-            <strong>Height:</strong> {{info.height}} cm<br>
-            Circumferences:<br>
-            <strong>Waist</strong>: {{info.waist}} cm<br>
-            <strong>Neck:</strong> {{info.neck}} cm<br>
-            <p ng-hide="!isMan()"><strong>Hips:</strong> {{info.hips}} cm</p>
-            <strong>Activity Rate:</strong> {{info.activity}}<br>
+            <strong>{{'WEIGHT_TITLE' | translate}}</strong> {{info.weight|number:1}} kg<br>
+            <strong>{{'HEIGHT_TITLE' | translate}}</strong> {{info.height}} cm<br>
+            {{'MEASURES_TITLE' | translate}}<br>
+            <strong>{{'WAIST_TITLE' | translate}}</strong>: {{info.waist}} cm<br>
+            <strong>{{'NECK_TITLE' | translate}}</strong> {{info.neck}} cm<br>
+            <p ng-hide="!isMan()"><strong>{{'HIPS_TITLE' | translate}}</strong> {{info.hips}} cm</p>
+            <strong>{{'ACTIVITY' | translate}} </strong> {{info.activity}}<br>
           </div>
       </div>
       <div class="card">
           <div class="item item-divider">
-            Information Calculated:
+            {{'CALCULATED_TITLE' | translate}}
           </div>
           <div class="item item-text-wrap">
-            <strong>Body Fat:</strong> {{info.bf | number:1}}% <br>
-            <strong>Lean Body Mass:</strong> {{info.lbm | number:1}} kg<br>
-            <strong>BMR: </strong>{{info.bmr | number:0}}<br>
-            <strong>Estimated Daily Calorie Intake:</strong> {{info.tdee | number:0}}
+            <strong>{{'BF' | translate}}</strong> {{info.bf | number:1}}% <br>
+            <strong>{{'LBM' | translate}}</strong> {{info.lbm | number:1}} kg<br>
+            <strong>{{'BMR' | translate}} </strong>{{info.bmr | number:0}}<br>
+            <strong>{{'TDEE' | translate}}</strong> {{info.tdee | number:0}}
           </div>
       </div>
       <div class="card">
           <div class="item item-divider">
-            Your Plan:
+            {{'YOURPLAN_TITLE' | translate}}
           </div>
           <div class="item item-text-wrap">
-            <strong>Plan:</strong> {{info.objective}} <br>
-            <strong ng-hide="!info.isCutting">Target Weight Loss:</strong>
-            <strong ng-hide="info.isCutting">Target Muscle Gain:</strong>{{info.target}} kg
-            <br><strong>Fat intake:</strong> {{info.fatIntake}}<div ng-hide="!info.isCutting">g/kg of LBM</div><div ng-hide="info.isCutting">% of daily calorie</div>
-            <strong>Protein Intake:</strong> {{info.proteinIntake}}g/kg of LBM
+            <strong>{{'OBJECTIVE' | translate}}</strong> {{info.objective}} <br>
+            <strong ng-hide="!info.isCutting">{{'TARGETCUTTING_TITLE' | translate}}</strong>
+            <strong ng-hide="info.isCutting">{{'TARGETBULKING_TITLE' | translate}}</strong>{{info.target}} kg
+            <br><strong>{{'FATINTAKE' | translate}}</strong> {{info.fatIntake}}<div ng-hide="!info.isCutting">{{'GRAMSPERLBM' | translate}}</div><div ng-hide="info.isCutting">% of daily calorie</div>
+            <strong>{{'PROTEININTAKE' | translate}}</strong> {{info.proteinIntake}}g/kg of LBM
           </div>
       </div>
       <div class="card" ng-hide="info.notCycling">
           <div class="item item-divider">
-            Your Diet:
+            {{'YOURDIET_TITLE' | translate}}
           </div>
           <div class="item item-text-wrap">
-              <strong>Train days({{info.trainDays}}):</strong><br>
-              <strong>Calories:</strong> {{info.caloriesTrainDays | number:0}}<br>
-              <strong>Protein:</strong> {{info.proteinTrainDays | number:0}}<br>
-              <strong>Fat:</strong> {{info.fatTrainDays | number:0}}<br>
-              <strong>Carb:</strong> {{info.carbTrainDays | number:0}}<br>
+              <strong>{{'TRAINDAYS' | translate}}({{info.trainDays}}):</strong><br>
+              <strong>{{'CALORIES' | translate}}</strong> {{info.caloriesTrainDays | number:0}}<br>
+              <strong>{{'PROTEIN' | translate}}</strong> {{info.proteinTrainDays | number:0}}<br>
+              <strong>{{'FAT' | translate}}</strong> {{info.fatTrainDays | number:0}}<br>
+              <strong>{{'CARB' | translate}}</strong> {{info.carbTrainDays | number:0}}<br>
 
               <br>
 
-              <strong>Rest Days:</strong><br>
-              <strong>Calories:</strong> {{info.caloriesRestDays | number:0}}<br>
-              <strong>Protein:</strong> {{info.proteinRestDays | number:0}}<br>
-              <strong>Fat:</strong> {{info.fatRestDays | number:0}}<br>
-              <strong>Carb:</strong> {{info.carbRestDays | number:0}}<br>
+              <strong>{{'RESTDAYS' | translate}}</strong><br>
+              <strong>{{'CALORIES' | translate}}</strong> {{info.caloriesRestDays | number:0}}<br>
+              <strong>{{'PROTEIN' | translate}}</strong> {{info.proteinRestDays | number:0}}<br>
+              <strong>{{'FAT' | translate}}</strong> {{info.fatRestDays | number:0}}<br>
+              <strong>{{'CARB' | translate}}</strong> {{info.carbRestDays | number:0}}<br>
           </div>
       </div>
       <div class="card" ng-hide="!info.notCycling">
           <div class="item item-divider">
-            Your Diet:
+              {{'YOURDIET_TITLE' | translate}}
           </div>
           <div class="item item-text-wrap">
-              <strong>Calories:</strong> {{info.calories | number:0}}<br>
-              <strong>Protein:</strong> {{info.gramProtein | number:0}}<br>
-              <strong>Fat:</strong> {{info.gramsFat | number:0}}<br>
-              <strong>Carb:</strong> {{info.gramCarb | number:0}}<br>
+              <strong>{{'CALORIES' | translate}}</strong> {{info.calories | number:0}}<br>
+              <strong>{{'PROTEIN' | translate}}</strong> {{info.gramProtein | number:0}}<br>
+              <strong>{{'FAT' | translate}}</strong> {{info.gramsFat | number:0}}<br>
+              <strong>{{'CARB' | translate}}</strong> {{info.gramCarb | number:0}}<br>
           </div>
       </div>
     </ion-content>

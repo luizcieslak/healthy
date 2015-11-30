@@ -1,14 +1,14 @@
 <ion-view title="Login">
   <ion-content padding="true" class="has-header">
-    <form name="loginForm" ng-submit="signIn(loginForm)" novalidate="">
+    <form name="loginForm" ng-submit="signIn(user)" novalidate="">
       <ion-list>
         <label class="item item-input" ng-class="{ 'has-error-lr' : !loginForm.username.$modelValue && loginForm.$submitted, 'valid-lr' : loginForm.username.$modelValue  && loginForm.$submitted}">
           <span class="input-label">Username</span>
-          <input type="text" name="username" ng-model="data.username" ng-required="true">
+          <input type="text" name="username" ng-model="user.username" ng-required="true">
           </label>
           <label class="item item-input" "item item-input" ng-class="{ 'has-error-lr' : !loginForm.password.$modelValue && loginForm.$submitted, 'valid-lr' : loginForm.password.$modelValue  && loginForm.$submitted}">
             <span class="input-label">Password</span>
-            <input name="password" type="password" ng-model="password">
+            <input name="password" type="password" ng-model="user.password">
           </label>
       </ion-list>
       <div class="spacer" style="width: 300px; height: 43px;"></div>
@@ -16,6 +16,7 @@
       <a href="#/enter/signup" class="button button-dark button-outline button-block ">Or create an account</a>
       <div class="spacer" style="width: 300px; height: 70px;"></div>
     </form>
+    <button class="button button-stable button-block ">Enter with Google</button>
     <button class="button button-stable button-block ">Enter with Facebook</button>
   </ion-content>
 </ion-view>

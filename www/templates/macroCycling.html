@@ -1,35 +1,46 @@
-<ion-view title="Macro cycling">
+<ion-view title="{{'MACROCYCLING_TITLE' | translate}}">
     <ion-content padding="true" class="has-header">
         <div>
-            <p>If you train more than 3 times a week, it is suggested that you do a
-                <strong>macro cycling.</strong>
+            <p>{{'MACROCYCLING_DESCRIPTION' | translate}}
+                <strong>{{'MACROCYCLING_TITLE' | translate}}</strong>
             </p>
         </div>
         <form class="list" name="cyclingForm" ng-submit="validate(cyclingForm)" novalidate="">
           <ion-list ng-hide="data.notCycling">
-              <ion-item class="item-divider">How many days do you train?</ion-item>
-              <label class="item item-input" ng-class="{ 'has-error-lr' : !cyclingForm.trainDays.$modelValue && cyclingForm.$submitted, 'valid-lr' : cyclingForm.trainDays.$modelValue  && cyclingForm.$submitted}">
-                  <input name="trainDays" type="number" ng-model="data.trainDays" min="1" max:"7" ng-required="true">
+              <ion-item class="item-divider item-text-wrap">{{'TRAINDAYS_TITLE' | translate}}</ion-item>
+              <label class="item item-input"
+              ng-class="{ 'has-error-lr' : cyclingForm.trainDays.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.trainDays.$valid  && cyclingForm.$submitted}">
+                  <input name="trainDays" type="number" ng-model="data.trainDays" min="1" max:"7" ng-required="!data.notCycling">
               </label>
           </ion-list>
           <ion-list ng-hide="data.notCycling">
-              <ion-item class="item-divider">Calorie intake percentage difference between rest and train days:</ion-item>
-              <label class="item item-input" ng-class="{ 'has-error-lr' : !cyclingForm.diffCalorie.$modelValue && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffCalorie.$modelValue  && cyclingForm.$submitted}">
-                  <input name="diffCalorie" type="number" ng-model="data.diffCalorie" min="20" max:"40" ng-required="true">
+              <ion-item class="item-divider item-text-wrap">{{'DIFFCALORIE_TITLE' | translate}}</ion-item>
+              <label class="item item-input"
+              ng-class="{ 'has-error-lr' : cyclingForm.diffCalorie.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffCalorie.$valid  && cyclingForm.$submitted}">
+                  <input name="diffCalorie" type="number" ng-model="data.diffCalorie" min="20" max:"40" ng-required="!data.notCycling">
               </label>
           </ion-list>
           <ion-list ng-hide="data.notCycling">
-              <ion-item class="item-divider">Fat intake percentage difference between rest and train days:</ion-item>
-              <label class="item item-input" ng-class="{ 'has-error-lr' : !cyclingForm.diffFat.$modelValue && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffFat.$modelValue  && cyclingForm.$submitted}">
-                  <input name="diffFat" type="number" ng-model="data.diffFat" min="10" max:"50" ng-required="true">
+              <ion-item class="item-divider item-text-wrap">{{'DIFFFAT_TITLE' | translate}}</ion-item>
+              <label class="item item-input"
+              ng-class="{ 'has-error-lr' : cyclingForm.diffFat.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffFat.$valid  && cyclingForm.$submitted}">
+                  <input name="diffFat" type="number" ng-model="data.diffFat" min="10" max:"50" ng-required="!data.notCycling">
               </label>
           </ion-list>
           <ion-list>
-            <ion-checkbox name="cyclingCheckBox" ng-model="data.notCycling">I don't want this.</ion-checkbox>
+            <ion-checkbox name="cyclingCheckBox" ng-model="data.notCycling">{{'NOTCYCLING_TITLE' | translate}}</ion-checkbox>
           </ion-list>
           <button class="button button-dark button-block  button-full">
-            Done
+            {{'BUTTON_NEXT' | translate}}
           </button>
+          <div>
+              <p ng-click="showPopup()">
+                  <strong>{{'HELPME' | translate}}</strong>
+              </p>
+          </div>
+          <p class="error" ng-show="cyclingForm.$invalid && cyclingForm.$submitted">{{'FORM_ERROR' | translate}}</p>
+          <br>
+          <p class="error" ng-show="negativeCarb && cyclingForm.$submitted">{{'NEGATIVECARB' | translate}}</p>
         </form>
     </ion-content>
 </ion-view>

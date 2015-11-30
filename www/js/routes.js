@@ -2,11 +2,18 @@ angular.module('app.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
+  /*
+  UI Router: https://github.com/angular-ui/ui-router
+  Routes for templates.
+  */
+
   $stateProvider
+
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'loginCtrl'
+    })
 
     .state('tabsController', {
       url: '/tabs',
@@ -67,7 +74,15 @@ angular.module('app.routes', [])
 
 
 
-
+    .state('tabsController.foods', {
+      url: '/foods',
+      views: {
+        'tab2': {
+          templateUrl: 'templates/foods.html',
+          controller: 'underConstructionCtrl'
+        }
+      }
+    })
 
     .state('tabsController.meals', {
       url: '/meals',
@@ -95,7 +110,7 @@ angular.module('app.routes', [])
       views: {
         'tab3': {
           templateUrl: 'templates/tracking.html',
-          controller: 'trackingCtrl'
+          controller: 'underConstructionCtrl'
         }
       }
     })
@@ -132,23 +147,6 @@ angular.module('app.routes', [])
       templateUrl: 'templates/tracking2.html',
       controller: 'tracking2Ctrl'
     })
-
-    .state('tabsController.underconstruction', {
-      url: '/underconstruction',
-      views:{
-        'tab2':{
-          templateUrl: 'templates/underconstruction.html',
-          controller: 'underConstructionCtrl'
-        },
-        'tab3':{
-          templateUrl: 'templates/underconstruction.html',
-          controller: 'underConstructionCtrl'
-        }
-      }
-
-    })
-
-
 
     ;
 

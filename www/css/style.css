@@ -1,13 +1,17 @@
-label.item.has-error {
-  border-bottom: 2px solid red;
+label.item.has-error-lr {
+  border-top: 2px solid red;
 }
 
-label.item.has-error-lr {
+label.item.has-error {
   border-left: 2px solid red;
   border-right: 2px solid red;
 }
 
 label.item.valid-lr {
+  border-top: 2px solid green;
+}
+
+label.item.valid {
   border-left: 2px solid green;
   border-right: 2px solid green;
 }
@@ -21,6 +25,10 @@ label.item.valid-lr {
   color: red;
 }
 
-div.centertext{
+div.centertext {
   text-align: center;
+}
+
+p.error {
+  color: red;
 }
