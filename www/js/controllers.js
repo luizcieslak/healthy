@@ -24,10 +24,6 @@ angular.module('app.controllers', [])
     gender:'',
     objective:'',
     isCutting:true,
-    weight: 0,
-    height:0,
-    waist:0,
-    neck:0,
     activity:''
   };
 
@@ -71,9 +67,6 @@ angular.module('app.controllers', [])
 
 .controller('bulkingCtrl', function($scope,$state,sharedInfo,PopupFactory) {
   $scope.data={
-    target:0,
-    fatIntake:0,
-    proteinIntake:0
   };
 
   $scope.validate = function(form){
@@ -100,9 +93,6 @@ angular.module('app.controllers', [])
 
 .controller('cuttingCtrl', function($scope,$state,sharedInfo,PopupFactory) {
   $scope.data={
-    target:0,
-    fatIntake:0,
-    proteinIntake:0
   };
 
   $scope.validate = function(form){
@@ -131,9 +121,6 @@ angular.module('app.controllers', [])
 .controller('macroCyclingCtrl', function($scope,$state,sharedInfo,PopupFactory) {
   $scope.data={
     notCycling:false,
-    trainDays: 0,
-    diffCalorie: 0,
-    diffFat: 0
   };
 
   $scope.validate = function(form){

@@ -11,27 +11,29 @@
 
               <!-- Gender Radio Buttons -->
               <ion-radio name="gender"
-              ng-class="{ 'has-error-lr' : infoForm.gender.$pristine && infoForm.$submitted, 'valid-lr' : !infoForm.gender.$pristine  && infoForm.$submitted}"
+              ng-class="{ 'has-error-lr' : infoForm.gender.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.gender.$valid  && infoForm.$submitted}"
               value="Man"
-              ng-model="data.gender" >{{'MAN'| translate}}</ion-radio>
+              ng-model="data.gender"
+              ng-required="!data.gender" >{{'MAN'| translate}}</ion-radio>
 
               <ion-radio name="gender"
               value="Woman"
-              ng-model="data.gender" >{{'WOMAN'| translate}}</ion-radio>
+              ng-model="data.gender"
+              ng-required="!data.gender" >{{'WOMAN'| translate}}</ion-radio>
 
 
             <ion-item class="item-divider">{{ 'OBJECTIVE_TITLE'|translate}}</ion-item>
               <!--Objective radio buttons-->
               <ion-radio name="objective"
-              ng-class="{ 'has-error-lr' : infoForm.objective.$pristine && infoForm.$submitted, 'valid-lr' : !infoForm.objective.$pristine  && infoForm.$submitted}"
+              ng-class="{ 'has-error-lr' : infoForm.objective.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.objective.$valid  && infoForm.$submitted}"
               value="Cutting"
               ng-model="data.objective"
-              name="objective">{{'CUTTING'| translate}}</ion-radio>
+              ng-required="!data.objective">{{'CUTTING'| translate}}</ion-radio>
 
               <ion-radio name="objective"
               value="Bulking"
               ng-model="data.objective"
-              name="objective" class="item-text-wrap">{{'BULKING'| translate}}</ion-radio>
+              ng-required="!data.objective" class="item-text-wrap">{{'BULKING'| translate}}</ion-radio>
 
             <ion-item class="item-divider">{{ 'WEIGHT_TITLE' | translate }} {{data.weight}}</ion-item>
             <label class="item item-input"
@@ -74,27 +76,27 @@
               ng-class="{ 'has-error-lr' : infoForm.activity.$pristine && infoForm.$submitted, 'valid-lr' : !infoForm.activity.$pristine  && infoForm.$submitted}"
               value="Sedentary"
               ng-model="data.activity"
-              name="activity">{{'SEDENTARY'| translate}}</ion-radio>
+              ng-required="!data.activity">{{'SEDENTARY'| translate}}</ion-radio>
 
               <ion-radio name="activity"
               value="Lightly"
               ng-model="data.activity"
-              name="activity">{{'LIGHTLY'| translate}}</ion-radio>
+              ng-required="!data.activity">{{'LIGHTLY'| translate}}</ion-radio>
 
               <ion-radio name="activity"
               value="Moderately"
               ng-model="data.activity"
-              name="activity">{{'MODERATELY'| translate}}</ion-radio>
+              ng-required="!data.activity">{{'MODERATELY'| translate}}</ion-radio>
 
               <ion-radio name="activity"
               value="Very"
               ng-model="data.activity"
-              name="activity">{{'VERY'| translate}}</ion-radio>
+              ng-required="!data.activity">{{'VERY'| translate}}</ion-radio>
 
               <ion-radio name="activity"
               value="Extreme"
               model="data.activity"
-              name="activity">{{'EXTREME'| translate}}</ion-radio>
+              ng-required="!data.activity">{{'EXTREME'| translate}}</ion-radio>
 
 
             <button class="button button-dark button-block  button-full">
