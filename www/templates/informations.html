@@ -73,7 +73,7 @@
             <!--Activity Radio Buttons-->
             <ion-item class="item-divider">{{ 'ACTIVITY_TITLE' | translate }}</ion-item>
               <ion-radio name="activity"
-              ng-class="{ 'has-error-lr' : infoForm.activity.$pristine && infoForm.$submitted, 'valid-lr' : !infoForm.activity.$pristine  && infoForm.$submitted}"
+              ng-class="{ 'has-error-lr' : infoForm.activity.$invalid && infoForm.$submitted, 'valid-lr' : infoForm.activity.$invalid  && infoForm.$submitted}"
               value="Sedentary"
               ng-model="data.activity"
               ng-required="!data.activity">{{'SEDENTARY'| translate}}</ion-radio>

@@ -153,8 +153,8 @@ angular.module('app.translate', ['pascalprecht.translate'])
       'pt': 'br',
       'pt_br': 'br'
     })
-    .preferredLanguage('en')
+    //.preferredLanguage('en')
     //Test weren't made to see if determinePreferredLanguage() works on native app.
-    //.determinePreferredLanguage()
+    .determinePreferredLanguage()
     .useSanitizeValueStrategy("escaped");
 });

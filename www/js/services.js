@@ -16,7 +16,7 @@ angular.module('app.services', [])
 })
 
 //Service that stores the user info in one place.
-.service('sharedInfo', [function(){
+.factory('sharedInfo', [function(){
 
   var info={
     gender:'',
@@ -31,48 +31,67 @@ angular.module('app.services', [])
     proteinIntake:0,
     isSet: false
   };
+  // 
+  // var info={
+  //   gender:'Man',
+  //   objective:'Cutting',
+  //   weight:78,
+  //   height:189 ,
+  //   waist:89,
+  //   neck:40,
+  //   activity:'Sedentary',
+  //   target:0.5,
+  //   fatIntake:1,
+  //   proteinIntake:2.5,
+  //   isSet: true
+  // };
 
-  ////////////////////Calc functions//////////////////////////////////////////////////////////
-  var log10 = function(x){
-    return Math.log(x)/Math.log(10);
-  }
 
-  var isMan = function(){
-    return info.gender === 'Man';
-  }
 
-  var bf = function(height,neck,waist,hips){
-    if(isMan()){
-      return 86.01*log10((waist/2.54)-(neck/2.54))-70.041*log10(height/2.54)+36.76;
-    }else {
-      return 163.205*log10((waist/2.54)+(hips/2.54)-(neck/2.54))-97.684*log10(height/2.54)+78.387;
-    }
-  }
 
-  var lbm = function(bf,weight){
-    return weight*(1-(bf/100));
-  }
-
-  var bmr = function(lbm){
-    return (lbm*21.6)+370;
-  }
-
-  var tdee = function(bmr,activity){
-    if(activity === "Sedentary"){
-      return bmr*1.2;
-    } else if(activity === "Lightly"){
-      return bmr*1.375;
-    } else if(activity === "Moderately"){
-      return bmr*1.55;
-    } else if(activity === "A lot"){
-      return bmr*1.725;
-    } else if(activity === "Extreme"){
-      return bmr*1.9;
-    }
-  }
-  /////////////////////////////////////////////////////////////////////////////////////
 
   function doCalc(){
+
+    ////////////////////Calc functions//////////////////////////////////////////////////////////
+    var log10 = function(x){
+      return Math.log(x)/Math.log(10);
+    }
+
+    var isMan = function(){
+      return info.gender === 'Man';
+    }
+
+    var bf = function(height,neck,waist,hips){
+      if(isMan()){
+        return 86.01*log10((waist/2.54)-(neck/2.54))-70.041*log10(height/2.54)+36.76;
+      }else {
+        return 163.205*log10((waist/2.54)+(hips/2.54)-(neck/2.54))-97.684*log10(height/2.54)+78.387;
+      }
+    }
+
+    var lbm = function(bf,weight){
+      return weight*(1-(bf/100));
+    }
+
+    var bmr = function(lbm){
+      return (lbm*21.6)+370;
+    }
+
+    var tdee = function(bmr,activity){
+      if(activity === "Sedentary"){
+        return bmr*1.2;
+      } else if(activity === "Lightly"){
+        return bmr*1.375;
+      } else if(activity === "Moderately"){
+        return bmr*1.55;
+      } else if(activity === "A lot"){
+        return bmr*1.725;
+      } else if(activity === "Extreme"){
+        return bmr*1.9;
+      }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////
+
     info.bf = bf(info.height,info.neck,info.waist,info.hips);
     info.lbm = lbm(info.bf,info.weight);
     info.bmr = bmr(info.lbm);

@@ -16,10 +16,6 @@ angular.module('app.controllers', [])
 
 .controller('informationsCtrl', function($scope,$translate,$state,$ionicPopup,sharedInfo) {
 
-  if(sharedInfo.getInfo().isSet){
-    $state.go('tabsController.calc');
-  }
-
   $scope.data={
     gender:'',
     objective:'',
@@ -137,11 +133,12 @@ angular.module('app.controllers', [])
       sharedInfo.setInfo($scope.info);
       // console.log(sharedInfo.getInfo());
 
-      sharedInfo.doCalc();
+      sharedInfo.doCalc;
       $scope.info = sharedInfo.getInfo();
       if($scope.info.carbRestDays > 0){
         $state.go('tabsController.calc');
       }else{
+        console.log($scope.info);
         $scope.negativeCarb = true;
       }
 
@@ -160,11 +157,15 @@ angular.module('app.controllers', [])
 
 .controller('calcCtrl', function($scope,$state,sharedInfo) {
 
-  $scope.editInfo = function(){
-    $state.go('tabsController.info');
+  if(!sharedInfo.getInfo().isSet){
+    $state.go('tabsController.informations');
   }
 
-  sharedInfo.doCalc();
+  $scope.editInfo = function(){
+    $state.go('tabsController.informations');
+  }
+
+  //sharedInfo.doCalc();
   $scope.info = sharedInfo.getInfo();
 
 })

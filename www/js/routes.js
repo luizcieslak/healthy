@@ -18,7 +18,7 @@ angular.module('app.routes', [])
     .state('tabsController', {
       url: '/tabs',
       abstract:true,
-      templateUrl: 'templates/tabsController.html'
+      templateUrl: 'templates/tabsController.html',
     })
 
 
@@ -128,8 +128,6 @@ angular.module('app.routes', [])
 
 
 
-
-
     .state('tabsController.foodList', {
       url: '/foodlist',
       views: {
@@ -151,6 +149,6 @@ angular.module('app.routes', [])
     ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tabs/info');
+  $urlRouterProvider.otherwise('/tabs/calc');
 
 });

@@ -17,6 +17,7 @@ angular.module('app', ['ionic', 'ionic.service.analytics', 'ngMessages', 'app.tr
 // })
 
 .run(function($ionicPlatform, $ionicAnalytics) {
+
   $ionicPlatform.ready(function() {
     $ionicAnalytics.register();
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
