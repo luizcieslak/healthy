@@ -8,147 +8,122 @@ angular.module('app.routes', [])
   */
 
   $stateProvider
-
     .state('login', {
       url: '/login',
-      templateUrl: 'templates/login.html',
+      templateUrl: 'templates/login/login.html',
       controller: 'loginCtrl'
     })
 
-    .state('tabsController', {
+    .state('tabs', {
       url: '/tabs',
       abstract:true,
-      templateUrl: 'templates/tabsController.html',
+      templateUrl: 'templates/tabs.html',
     })
 
-
-    .state('tabsController.informations', {
+    .state('tabs.info', {
       url: '/info',
       views: {
-        'tab1': {
-          templateUrl: 'templates/informations.html',
-          controller: 'informationsCtrl'
+        'info-tab': {
+          templateUrl: 'templates/info/info.html',
+          controller: 'infoCtrl'
         }
       }
     })
 
-    .state('tabsController.bulking', {
+    .state('tabs.bulking', {
       url: '/bulking',
       views: {
-        'tab1': {
-          templateUrl: 'templates/bulking.html',
+        'info-tab': {
+          templateUrl: 'templates/info/bulking.html',
           controller: 'bulkingCtrl'
         }
       }
     })
 
-    .state('tabsController.cutting', {
+    .state('tabs.cutting', {
       url: '/cutting',
       views: {
-        'tab1': {
-          templateUrl: 'templates/cutting.html',
+        'info-tab': {
+          templateUrl: 'templates/info/cutting.html',
           controller: 'cuttingCtrl'
         }
       }
     })
 
-    .state('tabsController.macroCycling', {
+    .state('tabs.macroCycling', {
       url: '/cycling',
       views: {
-        'tab1': {
-          templateUrl: 'templates/macroCycling.html',
+        'info-tab': {
+          templateUrl: 'templates/info/macroCycling.html',
           controller: 'macroCyclingCtrl'
         }
       }
     })
 
-    .state('tabsController.calc', {
-      url: '/calc',
+    .state('tabs.overview', {
+      url: '/overview',
       views: {
-        'tab1': {
-          templateUrl: 'templates/calc.html',
-          controller: 'calcCtrl'
+        'info-tab': {
+          templateUrl: 'templates/info/overview.html',
+          controller: 'overviewCtrl'
         }
       }
     })
 
-
-
-    .state('tabsController.foods', {
-      url: '/foods',
-      views: {
-        'tab2': {
-          templateUrl: 'templates/foods.html',
-          controller: 'underConstructionCtrl'
-        }
-      }
-    })
-
-    .state('tabsController.meals', {
+    .state('tabs.meals', {
       url: '/meals',
       views: {
-        'tab2': {
-          templateUrl: 'templates/meals.html',
+        'meals-tab': {
+          templateUrl: 'templates/meals/meals.html',
           controller: 'mealsCtrl'
         }
       }
     })
 
-    .state('tabsController.foodinput', {
-      url: '/foodinput',
+    .state('tabs.foodSelector', {
+      url: '/foodSelector',
       views: {
-        'tab2': {
-          templateUrl: 'templates/foodinput.html',
-          controller: 'foodInputCtrl'
+        'meals-tab': {
+          templateUrl: 'templates/meals/foodSelector.html',
+          controller: 'foodSelectorCtrl'
+        }
+      }
+    })
+
+    .state('tabs.newFood', {
+      url: '/newFood',
+      views: {
+        'meals-tab': {
+          templateUrl: 'templates/meals/newFood.html',
+          controller: 'newFoodCtrl'
         }
       }
     })
 
 
-    .state('tabsController.tracking', {
+    .state('tabs.tracking', {
       url: '/tracking',
       views: {
-        'tab3': {
-          templateUrl: 'templates/tracking.html',
-          controller: 'underConstructionCtrl'
+        'tracking-tab': {
+          templateUrl: 'templates/tracking/tracking.html',
+          controller: 'trackingCtrl'
         }
       }
     })
 
 
-    .state('tabsController.mealsList', {
-      url: '/meals',
+    .state('tabs.trackingInput', {
+      url: '/trackingInput',
       views: {
-        'tab2': {
-          templateUrl: 'templates/mealsList.html',
-          controller: 'mealsListCtrl'
+        'tracking-tab': {
+          templateUrl: 'templates/tracking/trackingInput.html',
+          controller: 'trackingInputCtrl'
         }
       }
     })
-
-
-
-    .state('tabsController.foodList', {
-      url: '/foodlist',
-      views: {
-        'tab2': {
-          templateUrl: 'templates/foodList.html',
-          controller: 'foodListCtrl'
-        }
-      }
-    })
-
-
-
-    .state('tracking2', {
-      url: '/tracking',
-      templateUrl: 'templates/tracking2.html',
-      controller: 'tracking2Ctrl'
-    })
-
     ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tabs/calc');
+  $urlRouterProvider.otherwise('/login');
 
 });

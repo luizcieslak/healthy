@@ -5,6 +5,10 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+    <!-- datetimepicker MUST be loaded before ionic CSS due to Modal issues: https://forum.ionicframework.com/t/bootstrap-css-causes-modals-not-to-load/11609/4-->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+
     <link href="css/style.css" rel="stylesheet">
 
     <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
@@ -13,17 +17,43 @@
 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+
     <!--ngMessages -->
     <script src="lib/angular-messages/angular-messages.js"></script>
+
     <!--angular-translate -->
     <script src="lib/angular-translate/angular-translate.js"></script>
     <script src="js/translate.js"></script>
 
+
+    <!-- Controllers -->
+    <script src="js/controllers/controllers.js"></script>
+    <script src="js/controllers/info/infoCtrl.js"></script>
+    <script src="js/controllers/info/bulkingCtrl.js"></script>
+    <script src="js/controllers/info/cuttingCtrl.js"></script>
+    <script src="js/controllers/info/macroCyclingCtrl.js"></script>
+    <script src="js/controllers/info/overviewCtrl.js"></script>
+
+    <script src="js/controllers/meals/mealsCtrl.js"></script>
+    <script src="js/controllers/meals/foodSelectorCtrl.js"></script>
+    <script src="js/controllers/meals/newFoodCtrl.js"></script>
+
+    <script src="js/controllers/tracking/trackingCtrl.js"></script>
+    <script src="js/controllers/tracking/trackingInputCtrl.js"></script>
+
+    <script src="js/controllers/login/loginCtrl.js"></script>
+
+    <!-- Servies -->
+    <script src="js/services/services.js"></script>
+    <!-- Directives -->
+    <script src="js/directives/directives.js"></script>
+
     <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
     <script src="js/routes.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/directives.js"></script>
+
+    <script type="text/javascript" src="lib/moment/moment.js"></script>
+    <script type="text/javascript" src="lib/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script type="text/javascript" src="lib/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
 
   </head>
   <body ng-app="app" animation="slide-left-right-ios7">

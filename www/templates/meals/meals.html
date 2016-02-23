@@ -1,0 +1,13 @@
+<ion-view title="Meals">
+    <ion-nav-buttons side="right">
+    <button class="button button-icon ion-calendar" ng-click="modal.show()"></button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+      <div class="padding">
+        <datetimepicker data-ng-model="data.embeddedDate" data-datetimepicker-config="{ startView:'day', minView:'day' }" />
+      </div>
+    </ion-content>
+    <button class="button button-float" ng-click="addMeal()">
+        <i class="icon ion-plus"></i>
+    </button>
+</ion-view>
