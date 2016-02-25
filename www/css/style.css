@@ -38,7 +38,7 @@ p.error {
   color:white !important;
   z-index: 12 !important;
   position: absolute !important;
-  bottom: 10px !important;
+  bottom: 60px !important;
   right: 10px !important;
   border-radius: 50% !important;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;

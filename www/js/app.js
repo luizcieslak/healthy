@@ -15,7 +15,7 @@ angular.module('app',
 .run(function($ionicPlatform, $ionicAnalytics) {
 
   $ionicPlatform.ready(function() {
-    $ionicAnalytics.register();
+    //$ionicAnalytics.register();
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -29,5 +29,5 @@ angular.module('app',
 })
 
 .config(['$ionicConfigProvider', function($ionicConfigProvider) {
-  $ionicConfigProvider.tabs.position('top');
+  $ionicConfigProvider.tabs.position('bottom');
 }]);

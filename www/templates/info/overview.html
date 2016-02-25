@@ -1,6 +1,4 @@
 <ion-view title="{{'INFO_TITLE' | translate }}">
-  <ion-nav-buttons side="right">
-    </ion-nav-buttons>
     <ion-content padding="true" class="has-header" ng-show="info.isSet">
       <!-- put a profile card here-->
       <div class="card">
@@ -82,6 +80,7 @@
         <button class="button button-dark button-block  button-full" ng-click="beginConfig()">
           Start
         </button>
+        <p>Or<br>If you already have a calorie plan<br><b><a ng-click="modal.show()">click here</a></b></p>
       </div>
     </ion-content>
 </ion-view>
