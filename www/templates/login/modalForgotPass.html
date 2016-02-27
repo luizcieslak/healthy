@@ -1,0 +1,22 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+      <h1 class="title">Forgot password?</h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <form name="forgotPassForm" ng-submit="" novalidate="">
+      <ion-list>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" ng-model="emailForgotPass" ng-required="true">
+        </label>
+      </ion-list>
+      <!-- <div class="spacer" style="width: 300px; height: 43px;"></div> -->
+      <button class="button button-full button-dark" ng-click="forgotPass(emailForgotPass)">Retrieve Password</button>
+      <div ng-messages="forgotPassForm.email.$error" style="color:red" role="alert" ng-show="forgotPassForm.$submitted">
+        <div ng-message="required" class="centertext">Please enter your email.</div>
+        <div ng-message="email" class="centertext">Invalid email.</div>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

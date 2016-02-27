@@ -1,30 +1,35 @@
 angular.module('app.controllers')
-    .controller('loginCtrl', [
-        '$state', '$scope', 'PopupFactory',
-        function ($state, $scope, UserService, $window, PopupFactory) {
+    .controller('loginCtrl', function ($state, $scope, $window, PopupFactory, $ionicPopup, $ionicModal) {
 
-            $scope.signUpUser = function () {
+          $ionicModal.fromTemplateUrl('templates/login/modalForgotPass.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.modal = modal;
+          });
 
-              var myPopup = PopupFactory.getSignupPopup();
-              myPopup.then(function(res) {
+          $ionicModal.fromTemplateUrl('templates/login/modalSignup.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.modalSignup = modal;
+          });
 
-                UserService.init();
-                UserService.createUser($scope._newUser).then(function (_data) {
-                    $scope.user = _data;
+          $scope.forgotPass = function(email){
+            console.log(email);
+            //send a popup for confirmation
+            //do something
+          }
 
-                    alert("Success Creating User Account ");
+          $scope.signup = function(form,newUser){
+            console.log(form);
+            console.log(newUser);
+            //do something
+          }
 
-                    //$state.go('login', {});
-
-                }, function (_error) {
-                    alert("Error Creating User Account " + _error.debug)
-                });
-
-                console.log('created!', res);
-              });
+          $scope.goToInfo = function (form,user){
+            console.log(user);
+            console.log(form);
+            // $state.go('tabs.overview');
           };
-
-          $scope.goToInfo = function (){
-            $state.go('tabs.overview');
-          };
-}]);
+});

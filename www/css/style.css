@@ -88,3 +88,7 @@ p.error {
     -ms-flex-align: center;
     align-items: center;
 }
+
+a.iconbutton {
+  font-size: 30px;
+}
