@@ -1,6 +1,7 @@
 angular.module('app.controllers')
     .controller('loginCtrl', function ($state, $scope, $window, PopupFactory, $ionicPopup, $ionicModal) {
 
+
           $ionicModal.fromTemplateUrl('templates/login/modalForgotPass.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -27,7 +28,7 @@ angular.module('app.controllers')
             //do something
           }
 
-          $scope.goToInfo = function (form,user){
+          $scope.login = function (form,user){
             console.log(user);
             console.log(form);
             // $state.go('tabs.overview');

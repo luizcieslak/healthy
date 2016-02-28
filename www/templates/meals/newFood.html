@@ -1,33 +1,65 @@
 <ion-view title="Food input">
     <ion-content padding="true" class="has-header">
-        <form class="list" novalidate="" ng-submit="send(data)">
+        <form name="foodForm" class="list" novalidate="" ng-submit="send(data)">
             <label class="item item-input">
                 <span class="input-label">Name</span>
-                <input name="name" ng-model="data.name" type="text" placeholder="">
+                <input name="name" ng-model="data.name" type="text" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Quantity</span>
-                <input name="quantity" ng-model="data.fat" type="text" placeholder="">
+                <input name="quantity" ng-model="data.fat" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Calories</span>
-                <input name="calories" ng-model="data.calories" type="text" placeholder="">
+                <input name="calories" ng-model="data.calories" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Protein</span>
-                <input name="protein" ng-model="data.protein" type="text" placeholder="">
+                <input name="protein" ng-model="data.protein" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Carb</span>
-                <input name="carb" ng-model="data.carb" type="text" placeholder="">
+                <input name="carb" ng-model="data.carb" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Fat</span>
-                <input name="fat" ng-model="data.quantity" type="text" placeholder="">
+                <input name="fat" ng-model="data.quantity" type="number" min="0" ng-required="true">
             </label>
+
+            <div ng-messages="foodForm.name.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
+              <div ng-message="required" class="centertext">Please enter the food's name.</div>
+            </div>
+
+            <div ng-messages="foodForm.quantity.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
+              <div ng-message="required" class="centertext">Please enter the food's quantity.</div>
+              <div ng-message="number" class="centertext">Invalid food's quantity.</div>
+            </div>
+
+            <div ng-messages="foodForm.calories.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
+              <div ng-message="required" class="centertext">Please enter the food's calories.</div>
+              <div ng-message="number" class="centertext">Invalid food's calories.</div>
+            </div>
+
+            <div ng-messages="foodForm.protein.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
+              <div ng-message="required" class="centertext">Please enter the food's protein.</div>
+              <div ng-message="number" class="centertext">Invalid food's protein.</div>
+            </div>
+
+            <div ng-messages="foodForm.carb.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
+              <div ng-message="required" class="centertext">Please enter the food's carb.</div>
+              <div ng-message="number" class="centertext">Invalid food's carb.</div>
+            </div>
+
+            <div ng-messages="foodForm.fat.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
+              <div ng-message="required" class="centertext">Please enter the food's fat.</div>
+              <div ng-message="number" class="centertext">Invalid food's fat.</div>
+            </div>
+
             <button class="button button-dark button-block  button-full">
               Done
             </button>
         </form>
+        {{data | json}}
+        {{dataj}}
     </ion-content>
 </ion-view>
