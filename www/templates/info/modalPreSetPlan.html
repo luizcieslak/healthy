@@ -1,68 +1,118 @@
 <ion-modal-view>
   <ion-header-bar class="bar bar-header bar-dark">
-    <h1 class="title">New Contact</h1>
+    <h1 class="title">Calorie Plan</h1>
       <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
   </ion-header-bar>
   <ion-content class="padding">
     <div class="list">
-      <ion-checkbox name="cyclingCheckBox" ng-model="preSetPlan.cycling">Cycling calories?</ion-checkbox>
-      <div class="spacer" style="height: 20px;"></div>
-        <!-- Div showed only if the person is NOT cycling calories -->
-        <div ng-hide="preSetPlan.cycling">
-          <label class="item item-input">
-            <span class="input-label">Daily Calories</span>
-            <input ng-model="preSetPlan.calories" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Carbs</span>
-            <input ng-model="preSetPlan.carb" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Protein</span>
-            <input ng-model="preSetPlan.protein" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Fat</span>
-            <input ng-model="preSetPlan.fat" type="number" min="0">
-          </label>
-        </div>
-        <!-- Div showed only if the person is cycling calories -->
-        <div ng-show="preSetPlan.cycling">
-          <label class="item item-input">
-            <span class="input-label">Calories on train day</span>
-            <input ng-model="preSetPlan.caloriesTrainDay" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Carb</span>
-            <input ng-model="preSetPlan.carbTrainDay" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Protein</span>
-            <input ng-model="preSetPlan.proteinTrainDay" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Fat</span>
-            <input ng-model="preSetPlan.fatTrainDay" type="number" min="0">
-          </label>
-          <div class="spacer" style="height: 20px;"></div>
-          <label class="item item-input">
-            <span class="input-label">Calories on rest day</span>
-            <input ng-model="preSetPlan.caloriesRestDay" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Carb</span>
-            <input ng-model="preSetPlan.carbRestDay" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Protein</span>
-            <input ng-model="preSetPlan.proteinRestDay" type="number" min="0">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Fat</span>
-            <input ng-model="preSetPlan.fatRestDay" type="number" min="0">
-          </label>
-        </div>
-      <button class="button button-full button-dark" ng-click="save(preSetPlan)">Save</button>
+      <form name="preSetPlanForm" ng-submit="savePreSetPlan(preSetPlanForm,preSetPlan)" novalidate="">
+        <ion-checkbox name="cyclingCheckBox" ng-model="preSetPlan.cycling">Cycling calories?</ion-checkbox>
+        <div class="spacer" style="height: 20px;"></div>
+          <!-- Div showed only if the person is NOT cycling calories -->
+          <div ng-hide="preSetPlan.cycling">
+            <label class="item item-input">
+              <span class="input-label">Daily Calories</span>
+              <input ng-model="preSetPlan.calories" name="calories" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Carbs</span>
+              <input ng-model="preSetPlan.carb" type="number" name="carb" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Protein</span>
+              <input ng-model="preSetPlan.protein" type="number" name="protein" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Fat</span>
+              <input ng-model="preSetPlan.fat" type="number" name="fat" min="0" ng-required="true">
+            </label>
+
+            <div ng-messages="preSetPlanForm.calories.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing calories.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.carb.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing carbs.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.protein.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing proteins.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.fat.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing fats.</div>
+            </div>
+          </div>
+          <!-- Div showed only if the person is cycling calories -->
+          <div ng-show="preSetPlan.cycling">
+            <label class="item item-input">
+              <span class="input-label">Calories on train day</span>
+              <input ng-model="preSetPlan.caloriesTrainDay" name="caloriesTrainDay" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Carb</span>
+              <input ng-model="preSetPlan.carbTrainDay" name="carbTrainDay" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Protein</span>
+              <input ng-model="preSetPlan.proteinTrainDay" name="proteinTrainDay" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Fat</span>
+              <input ng-model="preSetPlan.fatTrainDay" name="fatTrainDay" type="number" min="0" ng-required="true">
+            </label>
+            <div class="spacer" style="height: 20px;"></div>
+            <label class="item item-input">
+              <span class="input-label">Calories on rest day</span>
+              <input ng-model="preSetPlan.caloriesRestDay" name="caloriesRestDay" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Carb</span>
+              <input ng-model="preSetPlan.carbRestDay" name="carbRestDay" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Protein</span>
+              <input ng-model="preSetPlan.proteinRestDay" name="proteinRestDay" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Fat</span>
+              <input ng-model="preSetPlan.fatRestDay" name="fatRestDay" type="number" min="0" ng-required="true">
+            </label>
+
+            <div ng-messages="preSetPlanForm.caloriesTrainDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing calories on train day.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.carbTrainDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing carbs on train day.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.proteinTrainDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing proteins on train day.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.fatTrainDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing fats on train day.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.caloriesRestDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing calories on rest day.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.carbRestDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing carbs on rest day.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.proteinRestDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing proteins on rest day.</div>
+            </div>
+
+            <div ng-messages="preSetPlanForm.fatRestDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
+              <div ng-message="required" class="centertext">Missing fats on rest day.</div>
+            </div>
+          </div>
+          <button class="button button-full button-dark">Save</button>
+        </form>
     </div>
   </ion-content>
 </ion-modal-view>

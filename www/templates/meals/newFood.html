@@ -1,6 +1,6 @@
 <ion-view title="Food input">
     <ion-content padding="true" class="has-header">
-        <form name="foodForm" class="list" novalidate="" ng-submit="send(data)">
+        <form name="foodForm" class="list" novalidate="" ng-submit="send(foodForm,data)">
             <label class="item item-input">
                 <span class="input-label">Name</span>
                 <input name="name" ng-model="data.name" type="text" ng-required="true">

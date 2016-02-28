@@ -19,8 +19,9 @@ angular.module('app.controllers')
     $state.go('tabs.info');
   }
 
-  $scope.save = function(preSetPlan){
+  $scope.preSetPlan = {};
+  $scope.savePreSetPlan = function(form,preSetPlan){
+    console.log(form);
     console.log(preSetPlan);
-    //save pre-set plan in database
   }
 });
