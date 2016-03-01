@@ -28,7 +28,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Repeat Password</span>
-          <input type="password" name="repeatPassword" ng-model="newUser.repeatPassword" ng-required="true">
+          <input type="password" name="passwordConfirm" ng-model="newUser.passwordConfirm" ng-required="true" match="newUser.password">
         </label>
       </ion-list>
 
@@ -44,6 +44,9 @@
       </div>
       <div ng-messages="signupForm.password.$error" style="color:red" role="alert" ng-show="signupForm.$submitted">
         <div ng-message="required" class="centertext">Please enter a password.</div>
+      </div>
+      <div ng-messages="signupForm.passwordConfirm.$error" style="color:red" role="alert">
+        <div ng-message="match" class="centertext">Passwords not match!</div>
       </div>
 
       <button class="button button-full button-dark">Go</button>
