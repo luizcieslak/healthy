@@ -1,29 +1,29 @@
 <ion-view title="Food input">
     <ion-content padding="true" class="has-header">
-        <form name="foodForm" class="list" novalidate="" ng-submit="send(foodForm,data)">
+        <form name="foodForm" class="list" novalidate="" ng-submit="send(foodForm,food)">
             <label class="item item-input">
                 <span class="input-label">Name</span>
-                <input name="name" ng-model="data.name" type="text" ng-required="true">
+                <input name="name" ng-model="food.name" type="text" ng-required="true">
             </label>
             <label class="item item-input">
-                <span class="input-label">Quantity</span>
-                <input name="quantity" ng-model="data.fat" type="number" min="0" ng-required="true">
+                <span class="input-label">Quantity in grams</span>
+                <input name="quantity" ng-model="food.quantity" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Calories</span>
-                <input name="calories" ng-model="data.calories" type="number" min="0" ng-required="true">
+                <input name="calories" ng-model="food.calories" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Protein</span>
-                <input name="protein" ng-model="data.protein" type="number" min="0" ng-required="true">
+                <input name="protein" ng-model="food.protein" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Carb</span>
-                <input name="carb" ng-model="data.carb" type="number" min="0" ng-required="true">
+                <input name="carb" ng-model="food.carb" type="number" min="0" ng-required="true">
             </label>
             <label class="item item-input">
                 <span class="input-label">Fat</span>
-                <input name="fat" ng-model="data.quantity" type="number" min="0" ng-required="true">
+                <input name="fat" ng-model="food.fat" type="number" min="0" ng-required="true">
             </label>
 
             <div ng-messages="foodForm.name.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
@@ -59,7 +59,7 @@
               Done
             </button>
         </form>
-        {{data | json}}
-        {{dataj}}
+        {{food | json}}
+        {{foodj}}
     </ion-content>
 </ion-view>
