@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-    .controller('loginCtrl', function ($state, $scope, $window, PopupFactory, $ionicPopup, $ionicModal) {
+    .controller('loginCtrl', function ($state, $scope, $ionicPopup, $ionicModal, Auth) {
 
 
           $ionicModal.fromTemplateUrl('templates/login/modalForgotPass.html', {
@@ -23,14 +23,58 @@ angular.module('app.controllers')
           }
 
           $scope.signup = function(form,newUser){
-            console.log(form);
             console.log(newUser);
-            //do something
+            console.log(form);
+
+            if(form.$valid){
+              Auth.$createUser({
+                  email: newUser.email,
+                  password: newUser.password
+                }).then(function(userData) {
+                  console.log("User created with uid: " + userData.uid);
+                }).catch(function(error) {
+                  console.log(error);
+                });
+            }
           }
 
           $scope.login = function (form,user){
             console.log(user);
             console.log(form);
-            // $state.go('tabs.overview');
+
+            if(form.$valid){
+
+              Auth.$authWithPassword({
+                email: user.email,
+                password: user.password
+              }).then(function(authData) {
+                console.log("Logged in as:", authData.uid);
+                $state.go('tabs.overview');
+              }).catch(function(error) {
+                console.error("Authentication failed:", error);
+                if(error.code ==='INVALID_PASSWORD')
+                  $scope.loginError = "Invalid password!";
+                else
+                  $scope.loginError = error;
+
+              });
+            }
+
           };
+
+          $scope.fbLogin = function(){
+            Auth.$authWithOAuthPopup("facebook").then(function(authData) {
+              console.log("Logged in as:", authData.uid);
+            }).catch(function(error) {
+              console.error("Authentication failed:", error);
+            });
+          }
+
+          $scope.gpLogin = function(){
+            Auth.$authWithOAuthPopup("google").then(function(authData) {
+              console.log("Logged in as:", authData.uid);
+            }).catch(function(error) {
+              console.error("Authentication failed:", error);
+            });
+          }
 });

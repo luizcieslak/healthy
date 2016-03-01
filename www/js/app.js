@@ -10,6 +10,8 @@ angular.module('app',
   'app.routes',
   'app.services',
   'app.directives',
+  'firebase',
+  'validation.match'
   ])
 
 .run(function($ionicPlatform, $ionicAnalytics) {

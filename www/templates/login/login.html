@@ -1,6 +1,6 @@
 <ion-view title="Login">
   <ion-content padding="true" class="has-header">
-    <form name="loginForm" ng-submit="goToInfo(loginForm,user)" novalidate="">
+    <form name="loginForm" ng-submit="login(loginForm,user)" novalidate="">
       <ion-list>
         <label class="item item-input">
           <span class="input-label">Email</span>
@@ -21,6 +21,10 @@
           <div ng-message="required" class="centertext">Please enter your password.</div>
         </div>
 
+        <div ng-if="loginError">
+          {{loginError}}
+        </div>
+
       <div class="spacer" style="height: 43px;"></div>
       <button class="button button-dark button-block">Log in</button>
     </form>
@@ -30,17 +34,11 @@
     <div class="spacer" style="width: 300px; height: 70px;"></div>
 
 
-    <!-- <div class="centertext">
-      or enter with
+    <div class="centertext">
+      or
     </div>
-    <div class="card">
-      <div class="item item-text-wrap">
-        <a class="iconbutton icon ion-social-googleplus"></a>
-        <div class="spacer" style="width: 5px;"></div>
-        <a class="iconbutton icon ion-social-facebook-outline"></a>
-        <div class="spacer" style="width: 5px;"></div>
-        <a class="iconbutton icon ion-social-twitter-outline"></a>
-      </div>
-    </div> -->
+    <button class="button button-positive button-block" ng-click="fbLogin()">Log in with Facebook</button>
+    <button class="button button-assertive button-block" ng-click="gpLogin()">Log in with Google+</button>
+
   </ion-content>
 </ion-view>
