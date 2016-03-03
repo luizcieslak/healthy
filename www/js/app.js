@@ -14,7 +14,7 @@ angular.module('app',
   'validation.match'
   ])
 
-.run(function($ionicPlatform, $ionicAnalytics) {
+.run(function($ionicPlatform, $ionicAnalytics, $rootScope, $state) {
 
   $ionicPlatform.ready(function() {
     //$ionicAnalytics.register();
@@ -27,6 +27,14 @@ angular.module('app',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+  });
+
+  $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+    // We can catch the error thrown when the $requireAuth promise is rejected
+    // and redirect the user back to the home page
+    if (error === "AUTH_REQUIRED") {
+      $state.go("login");
+      }
   });
 })
 
