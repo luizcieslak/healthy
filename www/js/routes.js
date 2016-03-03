@@ -11,13 +11,28 @@ angular.module('app.routes', [])
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login/login.html',
-      controller: 'loginCtrl'
+      controller: 'loginCtrl',
+      resolve: {
+      // controller will not be loaded until $waitForAuth resolves
+        "currentAuth": ["Auth", function(Auth) {
+          // $waitForAuth returns a promise so the resolve waits for it to complete
+          return Auth.$waitForAuth();
+        }]
+      }
     })
 
     .state('tabs', {
       url: '/tabs',
       abstract:true,
       templateUrl: 'templates/tabs.html',
+      resolve: {
+      // controller will not be loaded until $requireAuth resolves
+        "currentAuth": ["Auth", function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+        }]
+      }  
     })
 
     .state('tabs.info', {
