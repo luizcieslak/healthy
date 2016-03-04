@@ -5,31 +5,33 @@
                 <strong>{{'MACROCYCLING_TITLE' | translate}}</strong>
             </p>
         </div>
+
         <form class="list" name="cyclingForm" ng-submit="validate(cyclingForm)" novalidate="">
-          <ion-list ng-hide="data.notCycling">
-              <ion-item class="item-divider item-text-wrap">{{'TRAINDAYS_TITLE' | translate}}</ion-item>
-              <label class="item item-input"
-              ng-class="{ 'has-error-lr' : cyclingForm.trainDays.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.trainDays.$valid  && cyclingForm.$submitted}">
-                  <input name="trainDays" type="number" ng-model="data.trainDays" min="1" max:"7" ng-required="!data.notCycling">
-              </label>
-          </ion-list>
-          <ion-list ng-hide="data.notCycling">
-              <ion-item class="item-divider item-text-wrap">{{'DIFFCALORIE_TITLE' | translate}}</ion-item>
-              <label class="item item-input"
-              ng-class="{ 'has-error-lr' : cyclingForm.diffCalorie.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffCalorie.$valid  && cyclingForm.$submitted}">
-                  <input name="diffCalorie" type="number" ng-model="data.diffCalorie" min="20" max:"40" ng-required="!data.notCycling">
-              </label>
-          </ion-list>
-          <ion-list ng-hide="data.notCycling">
-              <ion-item class="item-divider item-text-wrap">{{'DIFFFAT_TITLE' | translate}}</ion-item>
-              <label class="item item-input"
-              ng-class="{ 'has-error-lr' : cyclingForm.diffFat.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffFat.$valid  && cyclingForm.$submitted}">
-                  <input name="diffFat" type="number" ng-model="data.diffFat" min="10" max:"50" ng-required="!data.notCycling">
-              </label>
-          </ion-list>
-          <ion-list>
-            <ion-checkbox name="cyclingCheckBox" ng-model="data.notCycling">{{'NOTCYCLING_TITLE' | translate}}</ion-checkbox>
-          </ion-list>
+          <ion-toggle toggle-class="toggle-dark" ng-model="data.cycling">Macro Cycling</ion-toggle>
+          <div ng-show="data.cycling">
+            <ion-list>
+                <ion-item class="item-divider item-text-wrap">{{'TRAINDAYS_TITLE' | translate}}</ion-item>
+                <label class="item item-input"
+                ng-class="{ 'has-error-lr' : cyclingForm.trainDays.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.trainDays.$valid  && cyclingForm.$submitted}">
+                    <input name="trainDays" type="number" ng-model="data.trainDays" min="1" max:"7" ng-required="data.cycling">
+                </label>
+
+                <ion-item class="item-divider item-text-wrap">{{'DIFFCALORIE_TITLE' | translate}}</ion-item>
+                <label class="item item-input"
+                ng-class="{ 'has-error-lr' : cyclingForm.diffCalorie.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffCalorie.$valid  && cyclingForm.$submitted}">
+                    <input name="diffCalorie" type="number" ng-model="data.diffCalorie" min="20" max:"40" ng-required="data.cycling">
+                </label>
+
+                <ion-item class="item-divider item-text-wrap">{{'DIFFFAT_TITLE' | translate}}</ion-item>
+                <label class="item item-input"
+                ng-class="{ 'has-error-lr' : cyclingForm.diffFat.$invalid && cyclingForm.$submitted, 'valid-lr' : cyclingForm.diffFat.$valid  && cyclingForm.$submitted}">
+                    <input name="diffFat" type="number" ng-model="data.diffFat" min="10" max:"50" ng-required="data.cycling">
+                </label>
+            </ion-list>
+          </div>
+          <!-- <ion-list>
+            <ion-checkbox name="cyclingCheckBox" ng-model="data.cycling">{{'cycling_TITLE' | translate}}</ion-checkbox>
+          </ion-list> -->
           <button class="button button-dark button-block  button-full">
             {{'BUTTON_NEXT' | translate}}
           </button>

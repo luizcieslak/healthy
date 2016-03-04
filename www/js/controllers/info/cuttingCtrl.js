@@ -1,6 +1,10 @@
 angular.module('app.controllers')
 .controller('cuttingCtrl', function($scope,$state,sharedInfo,PopupFactory) {
+  //info for fast testing
   $scope.data={
+    target:0.5,
+    fatIntake:1,
+    proteinIntake:2.5,
   };
 
   $scope.validate = function(form){

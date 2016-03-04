@@ -65,6 +65,7 @@ angular.module('app.controllers')
           $scope.fbLogin = function(){
             Auth.$authWithOAuthPopup("facebook").then(function(authData) {
               console.log("Logged in as:", authData.uid);
+              $state.go('tabs.overview');
             }).catch(function(error) {
               console.error("Authentication failed:", error);
             });
@@ -73,6 +74,7 @@ angular.module('app.controllers')
           $scope.gpLogin = function(){
             Auth.$authWithOAuthPopup("google").then(function(authData) {
               console.log("Logged in as:", authData.uid);
+              $state.go('tabs.overview');
             }).catch(function(error) {
               console.error("Authentication failed:", error);
             });

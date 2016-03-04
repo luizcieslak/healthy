@@ -8,6 +8,7 @@ angular.module('app.controllers')
   //   activity:''
   // };
 
+  //info for fast testing
   $scope.data={
     gender:'Man',
     objective:'Cutting',
@@ -16,10 +17,6 @@ angular.module('app.controllers')
     waist:89,
     neck:40,
     activity:'Sedentary',
-    target:0.5,
-    fatIntake:1,
-    proteinIntake:2.5,
-    isSet: true
   };
 
   $scope.isWoman = function(){

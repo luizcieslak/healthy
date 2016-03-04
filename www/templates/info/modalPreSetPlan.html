@@ -6,7 +6,7 @@
   <ion-content class="padding">
     <div class="list">
       <form name="preSetPlanForm" ng-submit="savePreSetPlan(preSetPlanForm,preSetPlan)" novalidate="">
-        <ion-checkbox name="cyclingCheckBox" ng-model="preSetPlan.cycling">Cycling calories?</ion-checkbox>
+          <ion-toggle toggle-class="toggle-dark" ng-model="preSetPlan.cycling">Cycling calories?</ion-toggle>
         <div class="spacer" style="height: 20px;"></div>
           <!-- Div showed only if the person is NOT cycling calories -->
           <div ng-hide="preSetPlan.cycling">
@@ -114,5 +114,6 @@
           <button class="button button-full button-dark">Save</button>
         </form>
     </div>
+    {{preSetPlan || json}}
   </ion-content>
 </ion-modal-view>

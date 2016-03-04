@@ -31,10 +31,6 @@ angular.module('app.services')
     //   isSet: true
     // };
 
-
-
-
-
     function doCalc(){
 
       ////////////////////Calc functions//////////////////////////////////////////////////////////
@@ -108,7 +104,7 @@ angular.module('app.services')
       info.gramsFat = gramsFat();
       info.gramCarb = calcCarb(info.calories,info.gramsProtein,info.gramsFat);
 
-      if(!info.notCycling){
+      if(info.cycling){
         info.caloriesTrainDays = (info.calories*7)/(info.trainDays+(7-info.trainDays)*(1-(info.diffCalorie/100)));
         info.proteinTrainDays = info.gramsProtein;
         info.fatTrainDays = (info.gramsFat*7)/((7-info.trainDays)+(info.trainDays)*(1-(info.diffFat/100)))*(1-info.diffFat/100);
