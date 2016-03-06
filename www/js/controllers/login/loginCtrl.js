@@ -1,7 +1,6 @@
 angular.module('app.controllers')
     .controller('loginCtrl', function ($state, $scope, $ionicPopup, $ionicModal, Auth) {
 
-
           $ionicModal.fromTemplateUrl('templates/login/modalForgotPass.html', {
             scope: $scope,
             animation: 'slide-in-up'

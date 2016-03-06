@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+      <h1 class="title">Add new meal</h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="card">
+      <!-- food info -->
+      <div class="centertext">
+        <p class="center"><b>{{foodSelected.name}}</b></p>
+        {{foodSelected.quantity}} {{foodSelected.type}}<br><br>
+
+        Calories: {{foodSelected.calories}}<br>
+        Carb: {{foodSelected.carb}}<br>
+        Protein: {{foodSelected.protein}}<br>
+        Fat: {{foodSelected.fat}}<br>
+      </div>
+    </div>
+    <form name="newMealForm" class="list" novalidate="" ng-submit="saveMeal(newMealForm)">
+      <label class="item item-input">
+          <span class="input-label">Quantity ({{foodSelected.type}})</span>
+          <input name="quantity" ng-model="foodSelected.quantityChosen" type="number" min="0" ng-required="true">
+      </label>
+      <button class="button button-dark button-block  button-full">
+        Done
+      </button>
+    </form>
+    <div ng-messages="newMealForm.quantity.$error" style="color:red" role="alert" ng-show="newMealForm.$submitted">
+      <div ng-message="required" class="centertext">Please enter the meals's quantity.</div>
+      <div ng-message="number" class="centertext">Invalid food's quantity.</div>
+    </div>
+  </ion-content>
+</ion-modal-view>
