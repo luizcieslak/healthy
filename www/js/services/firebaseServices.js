@@ -7,16 +7,13 @@ angular.module('app.services')
     }
   ])
 
-  .factory("Foods", ["$firebaseObject",
-  function($firebaseObject) {
-    return function(foodname) {
+  .factory("Foods", ["$firebaseArray",
+  function($firebaseArray) {
       // create a reference to the database node where we will store our data
-      var ref = new Firebase("https://popping-torch-1733.firebaseio.com/foods");
-      var foodRef = ref.child(foodname);
+      var ref = new Firebase("https://popping-torch-1733.firebaseio.com/foodArray");
 
-      // return it as a synchronized object
-      return $firebaseObject(foodRef);
-    }
+      // return just the ref, so we can apply query in the $firebaseArray
+      return $firebaseArray(ref);
   }])
 
   .factory("Users", ["$firebaseObject",

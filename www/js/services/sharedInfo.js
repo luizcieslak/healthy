@@ -86,7 +86,7 @@ angular.module('app.services')
         }
       }
 
-      var gramsFat = function(){
+      var fat = function(){
         if(info.isCutting){
           return info.lbm*info.fatIntake;
         }else{
@@ -100,14 +100,14 @@ angular.module('app.services')
 
 
       info.calories = calories();
-      info.gramsProtein = info.lbm*info.proteinIntake;
-      info.gramsFat = gramsFat();
-      info.gramCarb = calcCarb(info.calories,info.gramsProtein,info.gramsFat);
+      info.protein = info.lbm*info.proteinIntake;
+      info.fat = fat();
+      info.carb = calcCarb(info.calories,info.protein,info.fat);
 
       if(info.cycling){
         info.caloriesTrainDays = (info.calories*7)/(info.trainDays+(7-info.trainDays)*(1-(info.diffCalorie/100)));
-        info.proteinTrainDays = info.gramsProtein;
-        info.fatTrainDays = (info.gramsFat*7)/((7-info.trainDays)+(info.trainDays)*(1-(info.diffFat/100)))*(1-info.diffFat/100);
+        info.proteinTrainDays = info.protein;
+        info.fatTrainDays = (info.fat*7)/((7-info.trainDays)+(info.trainDays)*(1-(info.diffFat/100)))*(1-info.diffFat/100);
 
         info.carbTrainDays = calcCarb(info.caloriesTrainDays,info.proteinTrainDays,info.fatTrainDays);
 
@@ -117,7 +117,7 @@ angular.module('app.services')
 
         info.proteinRestDays = info.proteinTrainDays;
 
-        info.fatRestDays = (info.gramsFat*7)/
+        info.fatRestDays = (info.fat*7)/
         ((7-info.trainDays)+(info.trainDays)*(1-(info.diffFat/100)));
 
         info.carbRestDays = calcCarb(info.caloriesRestDays,info.proteinRestDays,info.fatRestDays);
