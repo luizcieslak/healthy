@@ -10,7 +10,7 @@ angular.module('app.controllers')
 
   $scope.goToDate = function(date){
     if(date){
-      console.log(date);
+      console.log(date.getDate());
     }else{
       $ionicPopup.alert({
          title: 'Invalid date!',
@@ -19,6 +19,10 @@ angular.module('app.controllers')
        });
     }
 
+  }
+
+  $scope.addMeal = function (){
+    $state.go('tabs.foodSelector');
   }
 
 });

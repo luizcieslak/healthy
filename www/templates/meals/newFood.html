@@ -6,8 +6,18 @@
                 <input name="name" ng-model="food.name" type="text" ng-required="true">
             </label>
             <label class="item item-input">
-                <span class="input-label">Quantity in grams</span>
+                <span class="input-label">Quantity</span>
                 <input name="quantity" ng-model="food.quantity" type="number" min="0" ng-required="true">
+            </label>
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Type
+              </div>
+              <select name="type" ng-model="food.type" ng-required="true">
+                <option>unit</option>
+                <option selected>grams</option>
+                <!-- <option>oz</option> -->
+              </select>
             </label>
             <label class="item item-input">
                 <span class="input-label">Calories</span>
@@ -55,11 +65,15 @@
               <div ng-message="number" class="centertext">Invalid food's fat.</div>
             </div>
 
+            <div ng-messages="foodForm.type.$error" style="color:red" role="alert" ng-show="foodForm.$submitted">
+              <div ng-message="required" class="centertext">Please enter the quantity's type.</div>
+            </div>
+
             <button class="button button-dark button-block  button-full">
               Done
             </button>
+            {{food | json}}
         </form>
-        {{food | json}}
-        {{foodj}}
+
     </ion-content>
 </ion-view>
