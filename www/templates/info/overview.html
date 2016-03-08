@@ -2,6 +2,7 @@
     <ion-content padding="true" class="has-header">
       <!-- put a profile card here-->
       <div ng-show="hasAPlan">
+
         <div ng-show="info.type === 'preset'">
           <div class="card" ng-show="info.cycling">
               <div class="item item-divider">
@@ -34,7 +35,6 @@
                   <strong>{{'CARB' | translate}}</strong> {{info.carb | number:0}}<br>
               </div>
           </div>
-        </div>
       </div>
 
       <div ng-show="info.type === 'healthy'">
@@ -110,6 +110,8 @@
       <button class="button button-dark button-block  button-full" ng-click="beginConfig()">
         Edit Info
       </button>
+    </div>
+
 
 
       <div class="centertext" ng-hide="hasAPlan">

@@ -6,7 +6,7 @@
   <ion-content class="padding">
     <div class="list">
       <form name="preSetPlanForm" ng-submit="savePreSetPlan(preSetPlanForm,preSetPlan)" novalidate="">
-          <ion-toggle toggle-class="toggle-dark" ng-model="preSetPlan.cycling">Cycling calories?</ion-toggle>
+          <!-- <ion-toggle toggle-class="toggle-dark" ng-model="preSetPlan.cycling">Cycling calories?</ion-toggle> -->
         <div class="spacer" style="height: 20px;"></div>
           <!-- Div showed only if the person is NOT cycling calories -->
           <div ng-hide="preSetPlan.cycling">
@@ -44,7 +44,7 @@
             </div>
           </div>
           <!-- Div showed only if the person is cycling calories -->
-          <div ng-show="preSetPlan.cycling">
+          <!-- <div ng-show="preSetPlan.cycling">
             <label class="item item-input">
               <span class="input-label">Calories on train day</span>
               <input ng-model="preSetPlan.caloriesTrainDay" name="caloriesTrainDay" type="number" min="0" ng-required="true">
@@ -110,7 +110,7 @@
             <div ng-messages="preSetPlanForm.fatRestDay.$error" style="color:red" role="alert" ng-show="preSetPlanForm.$submitted">
               <div ng-message="required" class="centertext">Missing fats on rest day.</div>
             </div>
-          </div>
+          </div> -->
           <button class="button button-full button-dark">Save</button>
         </form>
     </div>

@@ -29,9 +29,6 @@ angular.module('app.controllers')
       sharedInfo.doCalc();
       $scope.info = sharedInfo.getInfo();
       if($scope.info.carbRestDays > 0 && $scope.info.cycling){
-
-        console.log($scope.info);
-
         //save the data
         var user = Users($scope.authData.uid);
         user.info = $scope.info;

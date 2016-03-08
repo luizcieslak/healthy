@@ -14,10 +14,16 @@ angular.module('app.controllers')
       $scope.info.target = $scope.data.target;
       $scope.info.fatIntake = $scope.data.fatIntake;
       $scope.info.proteinIntake = $scope.data.proteinIntake;
-      //$scope.info ready to upload or do the calculations.
+      $scope.info.type = "healthy";
+      $scope.info.cycling = false;
+
+      //$scope.info ready to upload and do the calculations.
       sharedInfo.setInfo($scope.info);
-      // console.log(sharedInfo.getInfo());
-      $state.go('tabs.macroCycling');
+      sharedInfo.doCalc();
+
+
+      // $state.go('tabs.macroCycling');
+      $state.go('tabs.overview');
     }
   }
 
