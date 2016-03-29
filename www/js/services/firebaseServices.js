@@ -65,7 +65,19 @@ angular.module('app.services')
             total.fat += meal.fat;
           });
           return total;
-        }
+        },
+
+        // $$added: function(snap) {
+        //   console.log(snap);
+        // },
+        //
+        // $$updated: function(snap) {
+        //   console.log(snap);
+        // },
+        //
+        // $$removed: function(snap) {
+        //   console.log(snap);
+        // }
       });
 
       return function(uid,date) {

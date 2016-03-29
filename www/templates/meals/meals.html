@@ -8,25 +8,31 @@
           {{date | date}}
           <br><br>
           <b>
+            Total<br>
             Calories: {{total.calories}}<br>
             Carb: {{total.carb}} <br>
             Protein: {{total.protein}}<br>
             Fat: {{total.fat}}<br>
           </b>
         </div>
-        <div class="centertext">
-          <ul class="list">
-              <li class="item" ng-repeat="meal in userMeals">
-                <b>{{meal.quantityChosen}} <b ng-if="meal.type != 'unit'">{{meal.type}}</b> {{meal.name}}<b ng-if="meal.quantityChosen > 1">s</b></b><br>
-                {{meal.calories}} calories<br>
-                {{meal.carb}}g of carb <br>
-                {{meal.protein}}g of protein<br>
-                {{meal.fat}}g of fat
-              </li>
-          </ul>
-        </div>
       </div>
-      <div class="centertext" ng-if="userMeals.length == 0">
+      <ion-list show-delete="shouldShowDelete">
+
+          <ion-item ng-repeat="meal in userMeals" item="meal">
+            <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+            <b>{{meal.quantityChosen}} <b ng-if="meal.type != 'unit'">{{meal.type}}</b> {{meal.name}}<b ng-if="meal.quantityChosen > 1">s</b></b><br>
+            <p>{{meal.calories}} calories<br>
+            {{meal.carb}}g of carb <br>
+            {{meal.protein}}g of protein<br>
+            {{meal.fat}}g of fat</p>
+
+            <ion-option-button class="button-assertive icon ion-trash-a"
+                       ng-click="remove(meal)">
+            </ion-option-button>
+          </ion-item>
+
+      </ion-list>
+        <div class="centertext" ng-if="userMeals.length == 0">
         <b>{{date | date}}</b><br><br>
         {{noMeals}}
       </div>

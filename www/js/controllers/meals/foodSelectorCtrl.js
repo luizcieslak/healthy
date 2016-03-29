@@ -39,10 +39,13 @@ angular.module('app.controllers')
     if(form.$valid){
       //multiply quantity chosen with food attributes
       var food = {};
+      food.name = $scope.foodSelected.name;
       food.calories = $scope.foodSelected.calories * $scope.foodSelected.quantityChosen;
       food.carb = $scope.foodSelected.carb * $scope.foodSelected.quantityChosen;
       food.protein = $scope.foodSelected.protein * $scope.foodSelected.quantityChosen;
       food.fat = $scope.foodSelected.fat * $scope.foodSelected.quantityChosen;
+      food.quantity = $scope.foodSelected.quantity;
+      food.quantityChosen = $scope.foodSelected.quantityChosen;
 
       $scope.date = new Date();
 

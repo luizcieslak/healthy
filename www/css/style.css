@@ -92,3 +92,7 @@ p.error {
 a.iconbutton {
   font-size: 30px;
 }
+
+button.delete{
+  float: right;
+}
