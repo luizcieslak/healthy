@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('bulkingCtrl', function($scope,$state,sharedInfo,PopupFactory) {
+.controller('bulkingCtrl', function($scope,$state,sharedInfo,PopupFactory, User) {
   $scope.data={
   };
 
@@ -16,8 +16,20 @@ angular.module('app.controllers')
 
       sharedInfo.setInfo($scope.info);
       sharedInfo.doCalc();
-      // $state.go('tabs.macroCycling');
+
+      //save the data
+      $scope.info = sharedInfo.getInfo();
+      var user = User($scope.authData.uid);
+      user.info = $scope.info;
+      user.$save().then(function(){
+        alert('Your plan was saved with success!');
+      }).catch(function(error){
+        alert('Error: '+error);
+      })
       $state.go('tabs.overview');
+
+
+      // $state.go('tabs.macroCycling');
     }
   }
 

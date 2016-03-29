@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('cuttingCtrl', function($scope,$state,sharedInfo,PopupFactory) {
+.controller('cuttingCtrl', function($scope,$state,sharedInfo,PopupFactory,User) {
   //info for fast testing
   $scope.data={
     target:0.5,
@@ -21,9 +21,18 @@ angular.module('app.controllers')
       sharedInfo.setInfo($scope.info);
       sharedInfo.doCalc();
 
+      //save the data
+      $scope.info = sharedInfo.getInfo();
+      var user = User($scope.authData.uid);
+      user.info = $scope.info;
+      user.$save().then(function(){
+        alert('Your plan was saved with success!');
+      }).catch(function(error){
+        alert('Error: '+error);
+      })
 
-      // $state.go('tabs.macroCycling');
       $state.go('tabs.overview');
+      // $state.go('tabs.macroCycling');
     }
   }
 

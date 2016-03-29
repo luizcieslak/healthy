@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('overviewCtrl', function($scope,$state,$ionicModal,sharedInfo, Auth, Users, currentAuth) {
+.controller('overviewCtrl', function($scope,$state,$ionicModal,sharedInfo, Auth, User, currentAuth, $window) {
   $scope.hasAPlan=false;
 
   $scope.logout = function(){
@@ -14,12 +14,12 @@ angular.module('app.controllers')
     }
   });
 
-  var user = Users(currentAuth.uid);
+  var user = User(currentAuth.uid);
   user.$loaded().then(function(){
+    console.log(user);
     if(user.$value === null){
       console.log("plan not set");
     }else{
-      console.log(user.info);
       $scope.info = user.info;
       $scope.hasAPlan = true;
     }
@@ -29,7 +29,6 @@ angular.module('app.controllers')
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
-    console.log("modal created");
   });
 
   $scope.beginConfig = function(){
@@ -39,6 +38,7 @@ angular.module('app.controllers')
   $scope.editInfo = function(){
     //retrieve information from server
     $state.go('tabs.info');
+
   }
 
   $scope.preSetPlan = {};
@@ -49,10 +49,12 @@ angular.module('app.controllers')
     preSetPlan.type = "preset";
 
     //save the data
-    var user = Users(currentAuth.uid);
+    var user = User(currentAuth.uid);
     user.info = preSetPlan;
     user.$save().then(function(){
       alert('Your plan was saved with success!');
+      $scope.modal.hide();
+      $window.location.reload(true);
     }).catch(function(error){
       alert('Error: '+error);
     })

@@ -3,8 +3,32 @@
     <button class="button button-icon ion-calendar" ng-click="modal.show()"></button>
     </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
-      <div class="padding">
-        <datetimepicker data-ng-model="data.embeddedDate" data-datetimepicker-config="{ startView:'day', minView:'day' }" />
+      <div class="card" ng-if="userMeals.length>0">
+        <div class="item item-divider centertext">
+          {{date | date}}
+          <br><br>
+          <b>
+            Calories: {{total.calories}}<br>
+            Carb: {{total.carb}} <br>
+            Protein: {{total.protein}}<br>
+            Fat: {{total.fat}}<br>
+          </b>
+        </div>
+        <div class="centertext">
+          <ul class="list">
+              <li class="item" ng-repeat="meal in userMeals">
+                <b>{{meal.quantityChosen}} <b ng-if="meal.type != 'unit'">{{meal.type}}</b> {{meal.name}}<b ng-if="meal.quantityChosen > 1">s</b></b><br>
+                {{meal.calories}} calories<br>
+                {{meal.carb}}g of carb <br>
+                {{meal.protein}}g of protein<br>
+                {{meal.fat}}g of fat
+              </li>
+          </ul>
+        </div>
+      </div>
+      <div class="centertext" ng-if="userMeals.length == 0">
+        <b>{{date | date}}</b><br><br>
+        {{noMeals}}
       </div>
     </ion-content>
     <button class="button button-float" ng-click="addMeal()">
